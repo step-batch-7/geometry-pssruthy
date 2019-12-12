@@ -6,13 +6,13 @@ describe('Line', function() {
     it('Should give line representation', function() {
       const line = new Line(1, 2, 2, 3);
       const expectedValue =
-        'Two points of the line are:\nPoint One :1,2\nPoint Two :2,3';
+        'The representation of the line is:\nEnd One :1,2\nEnd Two :2,3';
       assert.strictEqual(line.toString(), expectedValue);
     });
     it('Should give default points when no points are specified', function() {
       const line = new Line();
       const expectedValue =
-        'Two points of the line are:\nPoint One :0,0\nPoint Two :0,0';
+        'The representation of the line is:\nEnd One :0,0\nEnd Two :0,0';
       assert.strictEqual(line.toString(), expectedValue);
     });
   });

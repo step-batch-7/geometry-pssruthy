@@ -7,13 +7,14 @@ class Line {
   toString() {
     const { x1, y1 } = this.point1;
     const { x2, y2 } = this.point2;
-    const pointOne = `Point One :${x1},${y1}`;
-    const pointTwo = `Point Two :${x2},${y2}`;
-    return `Two points of the line are:\n${pointOne}\n${pointTwo}`;
+    const pointOne = `End One :${x1},${y1}`;
+    const pointTwo = `End Two :${x2},${y2}`;
+    return `The representation of the line is:\n${pointOne}\n${pointTwo}`;
   }
   isEqualTo(newLine) {
     let isPointOneEqual = this.point1.x1 == newLine.point1.x1;
     isPointOneEqual = isPointOneEqual && this.point1.y1 == newLine.point1.y1;
+
     let isPointTwoEqual = this.point2.x2 == newLine.point2.x2;
     isPointTwoEqual = isPointTwoEqual && this.point2.y2 == newLine.point2.y2;
 
