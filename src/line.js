@@ -1,13 +1,23 @@
 class Line {
   constructor(x1 = 0, y1 = 0, x2 = 0, y2 = 0) {
-    this.point1 = { x: x1, y: y1 };
-    this.point2 = { x: x2, y: y2 };
+    this.point1 = { x1, y1 };
+    this.point2 = { x2, y2 };
   }
 
   toString() {
-    const pointOne = `Point One :${this.point1.x},${this.point1.y}`;
-    const pointTwo = `Point Two :${this.point2.x},${this.point2.y}`;
-    return `${pointOne}\n${pointTwo}`;
+    const { x1, y1 } = this.point1;
+    const { x2, y2 } = this.point2;
+    const pointOne = `Point One :${x1},${y1}`;
+    const pointTwo = `Point Two :${x2},${y2}`;
+    return `Two points of the line are:\n${pointOne}\n${pointTwo}`;
+  }
+  isEqualTo(newLine) {
+    let isPointOneEqual = this.point1.x1 == newLine.point1.x1;
+    isPointOneEqual = isPointOneEqual && this.point1.y1 == newLine.point1.y1;
+    let isPointTwoEqual = this.point2.x2 == newLine.point2.x2;
+    isPointTwoEqual = isPointTwoEqual && this.point2.y2 == newLine.point2.y2;
+
+    return isPointTwoEqual && isPointOneEqual;
   }
 }
 
