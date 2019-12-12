@@ -1,31 +1,30 @@
-const arePointsEqual = function(point1, point2) {
-  let areEqual = point1.x === point2.x;
-  areEqual = areEqual && point1.y === point2.y;
+const areCoordinatesEqual = function(endA, endB) {
+  let areEqual = endA.x === endB.x;
+  areEqual = areEqual && endA.y === endB.y;
   return areEqual;
 };
 
 class Line {
   constructor(x1, y1, x2, y2) {
-    this.point1 = { x: x1, y: y1 };
-    this.point2 = { x: x2, y: y2 };
+    this.endA = { x: x1, y: y1 };
+    this.endB = { x: x2, y: y2 };
   }
 
   toString() {
-    const x1 = this.point1.x;
-    const y1 = this.point1.y;
-    const x2 = this.point2.x;
-    const y2 = this.point2.y;
+    const x1 = this.endA.x;
+    const y1 = this.endA.y;
+    const x2 = this.endB.x;
+    const y2 = this.endB.y;
 
-    const pointOne = `End One :${x1},${y1}`;
-    const pointTwo = `End Two :${x2},${y2}`;
-    return `The representation of the line is:\n${pointOne}\n${pointTwo}`;
+    const length = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+    return `(${x1},${y1})${'-'.repeat(length)}(${x2},${y2})`;
   }
 
   isEqualTo(newLine) {
-    const isPointOneEqual = arePointsEqual(this.point1, newLine.point1);
-    const isPointTwoEqual = arePointsEqual(this.point2, newLine.point2);
+    const isEndAEqual = areCoordinatesEqual(this.endA, newLine.endA);
+    const isEndBEqual = areCoordinatesEqual(this.endB, newLine.endB);
 
-    return isPointTwoEqual && isPointOneEqual;
+    return isEndBEqual && isEndAEqual;
   }
 }
 
