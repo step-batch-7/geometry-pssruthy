@@ -5,13 +5,13 @@ const areCoordinatesEqual = function(endA, endB) {
 };
 
 const areFromSameType = function(instanceA, instanceB) {
-  return instanceA instanceof Line === instanceB instanceof Line;
+  return instanceA instanceof Line && instanceB instanceof Line;
 };
 
 class Line {
-  constructor(x1, y1, x2, y2) {
-    this.endA = { x: x1, y: y1 };
-    this.endB = { x: x2, y: y2 };
+  constructor(endA, endB) {
+    this.endA = endA;
+    this.endB = endB;
   }
 
   toString() {

@@ -1,7 +1,6 @@
 {
   "name": "geometry-pssruthy",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -19,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/step-batch-7/geometry-pssruthy/issues"
   },
-  "homepage": "https://github.com/step-batch-7/geometry-pssruthy#readme"
+  "homepage": "https://github.com/step-batch-7/geometry-pssruthy#readme",
+  "dependencies": {
+    "mocha": "^6.2.2"
+  },
+  "devDependencies": {},
+  "description": ""
 }
