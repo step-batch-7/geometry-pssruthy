@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/step-batch-7/geometry-pssruthy#readme",
   "dependencies": {
+    "chai": "^4.2.0",
     "mocha": "^6.2.2"
   },
   "devDependencies": {},

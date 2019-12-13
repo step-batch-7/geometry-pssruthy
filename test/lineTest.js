@@ -1,5 +1,6 @@
 const Line = require('./../src/line.js');
-const assert = require('assert');
+const chai = require('chai');
+const assert = chai.assert;
 
 describe('Line', function() {
   describe('toString', function() {
@@ -44,6 +45,28 @@ describe('Line', function() {
     it('Should give length when end points of a line are negative numbers', () => {
       const line = new Line({ x: -6, y: -6 }, { x: -2, y: -3 });
       assert.strictEqual(line.length, 5);
+    });
+    it('Should give length as floating point', () => {
+      const line = new Line({ x: 2, y: 3 }, { x: 3, y: 4 });
+      assert.approximately(line.length, 1.4, 0.5);
+    });
+  });
+  describe('slope', function() {
+    it('Should give slope of a line when slope is positive', function() {
+      const line = new Line({ x: 3, y: 2 }, { x: 7, y: 3 });
+      assert.strictEqual(line.slope, 4);
+    });
+    it('Should give slope of a line when slope is negative', function() {
+      const line = new Line({ x: 7, y: 2 }, { x: 3, y: 3 });
+      assert.strictEqual(line.slope, -4);
+    });
+    it('Should give infinity when the line is parallel to x-axis', () => {
+      const line = new Line({ x: 8, y: 3 }, { x: 3, y: 3 });
+      assert.strictEqual(line.slope, -Infinity);
+    });
+    it('Should give zero when the line is parallel to y-axis', () => {
+      const line = new Line({ x: 3, y: 9 }, { x: 3, y: 3 });
+      assert.strictEqual(line.slope, 0);
     });
   });
 });

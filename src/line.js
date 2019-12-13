@@ -29,6 +29,12 @@ class Line {
     const lineLength = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
     return lineLength;
   }
+  get slope() {
+    const [x1, y1] = [this.endA.x, this.endA.y];
+    const [x2, y2] = [this.endB.x, this.endB.y];
+    const slope = (x2 - x1) / (y2 - y1);
+    return slope;
+  }
 }
 
 module.exports = Line;
