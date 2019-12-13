@@ -4,6 +4,10 @@ const areCoordinatesEqual = function(endA, endB) {
   return areEqual;
 };
 
+const areFromSameType = function(instanceA, instanceB) {
+  return instanceA instanceof Line === instanceB instanceof Line;
+};
+
 class Line {
   constructor(x1, y1, x2, y2) {
     this.endA = { x: x1, y: y1 };
@@ -21,10 +25,11 @@ class Line {
   }
 
   isEqualTo(newLine) {
+    const isTypeEqual = areFromSameType(this, newLine);
     const isEndAEqual = areCoordinatesEqual(this.endA, newLine.endA);
     const isEndBEqual = areCoordinatesEqual(this.endB, newLine.endB);
 
-    return isEndBEqual && isEndAEqual;
+    return isTypeEqual && isEndBEqual && isEndAEqual;
   }
 }
 

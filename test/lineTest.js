@@ -21,5 +21,10 @@ describe('Line', function() {
       const newLine = new Line(1, 5, 5, 4);
       assert.ok(!line.isEqualTo(newLine));
     });
+    it('Should give false when they are instances of different class', () => {
+      const line = new Line(2, 3, 4, 5);
+      const newLine = { endA: { x: 2, y: 3 }, endB: { x: 4, y: 5 } };
+      assert.ok(!line.isEqualTo(newLine));
+    });
   });
 });
