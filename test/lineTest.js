@@ -5,7 +5,8 @@ describe('Line', function() {
   describe('toString', function() {
     it('Should give line representation', function() {
       const line = new Line({ x: 1, y: 2 }, { x: 3, y: 3 });
-      const expectedValue = '(1,2)--(3,3)';
+      const expectedValue =
+        'The representation of the line is:\nEnd A :(1,2)\nEnd B :(3,3)';
       assert.strictEqual(line.toString(), expectedValue);
     });
   });
@@ -24,6 +25,11 @@ describe('Line', function() {
     it('Should give false when they are instances of different class', () => {
       const line = new Line({ x: 2, y: 3 }, { x: 4, y: 5 });
       const newLine = { endA: { x: 2, y: 3 }, endB: { x: 4, y: 5 } };
+      assert.ok(!line.isEqualTo(newLine));
+    });
+    it('Should invalidate when the other line object is empty', () => {
+      const line = new Line({ x: 2, y: 3 }, { x: 4, y: 5 });
+      const newLine = {};
       assert.ok(!line.isEqualTo(newLine));
     });
   });
