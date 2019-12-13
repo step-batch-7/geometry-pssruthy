@@ -14,13 +14,13 @@ class Line {
     return `Line : ${endA}-${endB}`;
   }
 
-  isEqualTo(newLine) {
-    if (!(newLine instanceof Line)) {
+  isEqualTo(other) {
+    if (!(other instanceof Line)) {
       return false;
     }
     return (
-      areCoordinatesEqual(this.endA, newLine.endA) &&
-      areCoordinatesEqual(this.endB, newLine.endB)
+      areCoordinatesEqual(this.endA, other.endA) &&
+      areCoordinatesEqual(this.endB, other.endB)
     );
   }
 }
