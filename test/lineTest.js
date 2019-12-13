@@ -5,8 +5,7 @@ describe('Line', function() {
   describe('toString', function() {
     it('Should give line representation', function() {
       const line = new Line({ x: 1, y: 2 }, { x: 3, y: 3 });
-      const expectedValue =
-        'The representation of the line is:\nEnd A :(1,2)\nEnd B :(3,3)';
+      const expectedValue = 'Line : (1,2)-(3,3)';
       assert.strictEqual(line.toString(), expectedValue);
     });
   });

@@ -13,10 +13,10 @@ class Line {
   }
 
   toString() {
-    const endA = `End A :(${this.endA.x},${this.endA.y})`;
-    const endB = `End B :(${this.endB.x},${this.endB.y})`;
+    const endA = `(${this.endA.x},${this.endA.y})`;
+    const endB = `(${this.endB.x},${this.endB.y})`;
 
-    return `The representation of the line is:\n${endA}\n${endB}`;
+    return `Line : ${endA}-${endB}`;
   }
 
   isEqualTo(newLine) {
