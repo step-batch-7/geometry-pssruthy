@@ -37,5 +37,13 @@ describe('Line', function() {
       const line = new Line({ x: 2, y: 3 }, { x: 2, y: 3 });
       assert.strictEqual(line.length, 0);
     });
+    it('Should give length when end points of a line are positive numbers', () => {
+      const line = new Line({ x: 6, y: 6 }, { x: 2, y: 3 });
+      assert.strictEqual(line.length, 5);
+    });
+    it('Should give length when end points of a line are negative numbers', () => {
+      const line = new Line({ x: -6, y: -6 }, { x: -2, y: -3 });
+      assert.strictEqual(line.length, 5);
+    });
   });
 });
