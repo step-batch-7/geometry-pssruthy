@@ -1,6 +1,7 @@
-const areCoordinatesEqual = function(endA, endB) {
-  let areEqual = endA.x === endB.x;
-  areEqual = areEqual && endA.y === endB.y;
+const areCoordinatesEqual = function(pointA, pointB) {
+  let areEqual = pointA.x === pointB.x;
+  areEqual = areEqual && pointA.y === pointB.y;
+
   return areEqual;
 };
 
