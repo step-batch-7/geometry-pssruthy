@@ -1,8 +1,5 @@
 const areCoordinatesEqual = function(pointA, pointB) {
-  let areEqual = pointA.x === pointB.x;
-  areEqual = areEqual && pointA.y === pointB.y;
-
-  return areEqual;
+  return pointA.x === pointB.x && pointA.y === pointB.y;
 };
 
 const areFromSameInstance = function(instanceA, instanceB) {
