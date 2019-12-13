@@ -32,4 +32,10 @@ describe('Line', function() {
       assert.ok(!line.isEqualTo(other));
     });
   });
+  describe('length', function() {
+    it('Should give zero when end points of the line are same', function() {
+      const line = new Line({ x: 2, y: 3 }, { x: 2, y: 3 });
+      assert.strictEqual(line.length, 0);
+    });
+  });
 });
