@@ -60,13 +60,24 @@ describe('Line', function() {
       const line = new Line({ x: 7, y: 2 }, { x: 3, y: 3 });
       assert.strictEqual(line.slope, -4);
     });
-    it('Should give infinity when the line is parallel to x-axis', () => {
+    it('Should give infinity when the line is parallel to y-axis', () => {
       const line = new Line({ x: 8, y: 3 }, { x: 3, y: 3 });
       assert.strictEqual(line.slope, -Infinity);
     });
-    it('Should give zero when the line is parallel to y-axis', () => {
+    it('Should give zero when the line is parallel to x-axis', () => {
       const line = new Line({ x: 3, y: 9 }, { x: 3, y: 3 });
       assert.strictEqual(line.slope, 0);
+    });
+  });
+  describe('isParallelTo', function() {
+    it('Should give true when two lines are parallel', function() {
+      let line = new Line({ x: 5, y: 6 }, { x: 2, y: 3 });
+      let otherLine = new Line({ x: 6, y: 4 }, { x: 4, y: 2 });
+      assert.ok(line.isParallelTo(otherLine));
+
+      line = new Line({ x: 1, y: 2 }, { x: -5, y: 4 });
+      otherLine = new Line({ x: 1, y: 1 }, { x: 4, y: 0 });
+      assert.ok(line.isParallelTo(otherLine));
     });
   });
 });
