@@ -9,11 +9,16 @@ describe('Point', function() {
     });
   });
   describe('visit', function() {
-    it('Should give sum of coordinates', function() {
-      const point = new Point(2, 3);
+    it('Should give result of action in coordinates', function() {
+      let point = new Point(2, 3);
       assert.strictEqual(
         point.visit((x, y) => x + y),
         5
+      );
+      point = new Point(2, 3);
+      assert.strictEqual(
+        point.visit((x, y) => x * y),
+        6
       );
     });
   });
