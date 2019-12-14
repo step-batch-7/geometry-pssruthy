@@ -1,12 +1,11 @@
 const Line = require('./../src/line.js');
-const chai = require('chai');
-const assert = chai.assert;
+const { assert } = require('chai');
 
 describe('Line', function() {
   describe('toString', function() {
     it('Should give line representation', function() {
       const line = new Line({ x: 1, y: 2 }, { x: 3, y: 3 });
-      const expectedValue = 'Line : (1,2)-(3,3)';
+      const expectedValue = '[Line (1,2) to (3,3)]';
       assert.strictEqual(line.toString(), expectedValue);
     });
   });
@@ -33,16 +32,17 @@ describe('Line', function() {
       assert.ok(!line.isEqualTo(other));
     });
   });
+
   describe('length', function() {
     it('Should give zero when end points of the line are same', function() {
       const line = new Line({ x: 2, y: 3 }, { x: 2, y: 3 });
       assert.strictEqual(line.length, 0);
     });
-    it('Should give length when end points of a line are positive numbers', () => {
+    it('Should give length when end points of a line coordinates are positive numbers', () => {
       const line = new Line({ x: 6, y: 6 }, { x: 2, y: 3 });
       assert.strictEqual(line.length, 5);
     });
-    it('Should give length when end points of a line are negative numbers', () => {
+    it('Should give length when end points of a line coordinates are negative numbers', () => {
       const line = new Line({ x: -6, y: -6 }, { x: -2, y: -3 });
       assert.strictEqual(line.length, 5);
     });
@@ -51,6 +51,7 @@ describe('Line', function() {
       assert.approximately(line.length, 1.4, 0.5);
     });
   });
+
   describe('slope', function() {
     it('Should give slope of a line when slope is positive', function() {
       const line = new Line({ x: 3, y: 2 }, { x: 7, y: 3 });
@@ -61,14 +62,18 @@ describe('Line', function() {
       assert.strictEqual(line.slope, -4);
     });
     it('Should give infinity when the line is parallel to y-axis', () => {
-      const line = new Line({ x: 8, y: 3 }, { x: 3, y: 3 });
+      let line = new Line({ x: 8, y: 3 }, { x: 3, y: 3 });
       assert.strictEqual(line.slope, -Infinity);
+
+      line = new Line({ x: 3, y: 3 }, { x: 8, y: 3 });
+      assert.strictEqual(line.slope, Infinity);
     });
     it('Should give zero when the line is parallel to x-axis', () => {
       const line = new Line({ x: 3, y: 9 }, { x: 3, y: 3 });
       assert.strictEqual(line.slope, 0);
     });
   });
+
   describe('isParallelTo', function() {
     it('Should give true when two lines are parallel', function() {
       let line = new Line({ x: 5, y: 6 }, { x: 2, y: 3 });
@@ -78,6 +83,11 @@ describe('Line', function() {
       line = new Line({ x: 1, y: 2 }, { x: -5, y: 4 });
       otherLine = new Line({ x: 1, y: 1 }, { x: 4, y: 0 });
       assert.ok(line.isParallelTo(otherLine));
+    });
+    it('Should give false when two lines are not parallel', function() {
+      const line = new Line({ x: 4, y: 6 }, { x: 2, y: 3 });
+      const otherLine = new Line({ x: 6, y: 4 }, { x: 9, y: 2 });
+      assert.notOk(line.isParallelTo(otherLine));
     });
   });
 });
