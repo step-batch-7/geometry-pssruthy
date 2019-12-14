@@ -93,8 +93,11 @@ describe('Line', function() {
 
   describe('findY', function() {
     it('Should give y for a given x on the line ', function() {
-      const line = new Line({ x: 1, y: 1 }, { x: 3, y: 3 });
-      assert.strictEqual(line.findY(4), 3);
+      let line = new Line({ x: 1, y: 1 }, { x: 3, y: 3 });
+      assert.strictEqual(line.findY(4), 4);
+
+      line = new Line({ x: 3, y: 5 }, { x: 2, y: 4 });
+      assert.strictEqual(line.findY(2), 4);
     });
   });
 });
