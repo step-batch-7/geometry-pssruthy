@@ -1,3 +1,5 @@
+'use strict';
+
 const areCoordinatesEqual = function(pointA, pointB) {
   return pointA.x === pointB.x && pointA.y === pointB.y;
 };
@@ -19,9 +21,7 @@ class Line {
   }
 
   isEqualTo(other) {
-    if (!(other instanceof Line)) {
-      return false;
-    }
+    if (!(other instanceof Line)) return false;
     return (
       areCoordinatesEqual(this.endA, other.endA) &&
       areCoordinatesEqual(this.endB, other.endB)
