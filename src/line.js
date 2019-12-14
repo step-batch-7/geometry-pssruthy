@@ -8,6 +8,12 @@ const getIntercept = function(point, slope) {
   return point.y - slope * point.x;
 };
 
+const getMiddlePoint = function(pointA, pointB) {
+  const middleX = (pointA.x + pointB.x) / 2;
+  const middleY = (pointA.y + pointB.y) / 2;
+  return { x: middleX, y: middleY };
+};
+
 class Line {
   constructor(endA, endB) {
     this.endA = { x: endA.x, y: endA.y };
@@ -53,6 +59,12 @@ class Line {
 
   findY(x) {
     return this.slope * x + getIntercept(this.endA, this.slope);
+  }
+  split() {
+    const lineMiddlePoint = getMiddlePoint(this.endA, this.endB);
+    const lineFirstHalf = new Line(this.endA, lineMiddlePoint);
+    const lineSecondHalf = new Line(lineMiddlePoint, this.endB);
+    return [lineFirstHalf, lineSecondHalf];
   }
 }
 

@@ -102,4 +102,13 @@ describe('Line', function() {
       assert.strictEqual(line.findY(2), 4);
     });
   });
+
+  describe('split', function() {
+    it('Should give two line instance by splitting the line into two', () => {
+      const line = new Line({ x: 1, y: 1 }, { x: 3, y: 3 });
+      const lineFirstHalf = new Line({ x: 1, y: 1 }, { x: 2, y: 2 });
+      const lineSecondHalf = new Line({ x: 2, y: 2 }, { x: 3, y: 3 });
+      assert.deepStrictEqual(line.split(), [lineFirstHalf, lineSecondHalf]);
+    });
+  });
 });
