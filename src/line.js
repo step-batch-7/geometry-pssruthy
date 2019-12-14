@@ -60,6 +60,11 @@ class Line {
   findY(x) {
     return this.slope * x + getIntercept(this.endA, this.slope);
   }
+
+  findX(y) {
+    return y - getIntercept(this.endA, this.slope / this.slope);
+  }
+
   split() {
     const lineMiddlePoint = getMiddlePoint(this.endA, this.endB);
     const lineFirstHalf = new Line(this.endA, lineMiddlePoint);

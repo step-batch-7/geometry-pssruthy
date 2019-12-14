@@ -3,22 +3,22 @@
 const Line = require('./../src/line.js');
 const { assert } = require('chai');
 
-describe('Line', function() {
-  describe('toString', function() {
-    it('Should give line representation', function() {
+describe('Line', () => {
+  describe('toString', () => {
+    it('Should give line representation', () => {
       const line = new Line({ x: 1, y: 2 }, { x: 3, y: 3 });
       const expectedValue = '[Line (1,2) to (3,3)]';
       assert.strictEqual(line.toString(), expectedValue);
     });
   });
 
-  describe('isEqualTo', function() {
-    it('Should give true when two lines are equal', function() {
+  describe('isEqualTo', () => {
+    it('Should give true when two lines are equal', () => {
       const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
       const other = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
       assert.ok(line.isEqualTo(other));
     });
-    it('Should give false when two lines are not equal', function() {
+    it('Should give false when two lines are not equal', () => {
       const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
       const other = new Line({ x: 1, y: 4 }, { x: 9, y: 4 });
       assert.ok(!line.isEqualTo(other));
@@ -35,8 +35,8 @@ describe('Line', function() {
     });
   });
 
-  describe('length', function() {
-    it('Should give zero when end points of the line are same', function() {
+  describe('length', () => {
+    it('Should give zero when end points of the line are same', () => {
       const line = new Line({ x: 2, y: 3 }, { x: 2, y: 3 });
       assert.strictEqual(line.length, 0);
     });
@@ -54,12 +54,12 @@ describe('Line', function() {
     });
   });
 
-  describe('slope', function() {
-    it('Should give slope of a line when slope is positive', function() {
+  describe('slope', () => {
+    it('Should give slope of a line when slope is positive', () => {
       const line = new Line({ x: 3, y: 2 }, { x: 7, y: 3 });
       assert.strictEqual(line.slope, 4);
     });
-    it('Should give slope of a line when slope is negative', function() {
+    it('Should give slope of a line when slope is negative', () => {
       const line = new Line({ x: 7, y: 2 }, { x: 3, y: 3 });
       assert.strictEqual(line.slope, -4);
     });
@@ -76,8 +76,8 @@ describe('Line', function() {
     });
   });
 
-  describe('isParallelTo', function() {
-    it('Should give true when two lines are parallel', function() {
+  describe('isParallelTo', () => {
+    it('Should give true when two lines are parallel', () => {
       let line = new Line({ x: 5, y: 6 }, { x: 2, y: 3 });
       let otherLine = new Line({ x: 6, y: 4 }, { x: 4, y: 2 });
       assert.ok(line.isParallelTo(otherLine));
@@ -86,15 +86,15 @@ describe('Line', function() {
       otherLine = new Line({ x: 1, y: 1 }, { x: 4, y: 0 });
       assert.ok(line.isParallelTo(otherLine));
     });
-    it('Should give false when two lines are not parallel', function() {
+    it('Should give false when two lines are not parallel', () => {
       const line = new Line({ x: 4, y: 6 }, { x: 2, y: 3 });
       const otherLine = new Line({ x: 6, y: 4 }, { x: 9, y: 2 });
       assert.notOk(line.isParallelTo(otherLine));
     });
   });
 
-  describe('findY', function() {
-    it('Should give y for a given x on the line ', function() {
+  describe('findY', () => {
+    it('Should give y coordinate for a given x coordinate on the line ', () => {
       let line = new Line({ x: 1, y: 1 }, { x: 3, y: 3 });
       assert.strictEqual(line.findY(4), 4);
 
@@ -103,7 +103,14 @@ describe('Line', function() {
     });
   });
 
-  describe('split', function() {
+  describe('findX', () => {
+    it('Should give x coordinate for a given y coordinate on the line', () => {
+      const line = new Line({ x: 3, y: 5 }, { x: 2, y: 4 });
+      assert.strictEqual(line.findX(4), 2);
+    });
+  });
+
+  describe('split', () => {
     it('Should give two line instance by splitting the line into two', () => {
       let line = new Line({ x: 1, y: 1 }, { x: 3, y: 3 });
       let lineFirstHalf = new Line({ x: 1, y: 1 }, { x: 2, y: 2 });
