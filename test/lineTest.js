@@ -90,4 +90,11 @@ describe('Line', function() {
       assert.notOk(line.isParallelTo(otherLine));
     });
   });
+
+  describe('findY', function() {
+    it('Should give y for a given x on the line ', function() {
+      const line = new Line({ x: 1, y: 1 }, { x: 3, y: 3 });
+      assert.strictEqual(line.findY(4), 3);
+    });
+  });
 });

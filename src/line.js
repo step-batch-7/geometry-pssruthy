@@ -2,6 +2,10 @@ const areCoordinatesEqual = function(pointA, pointB) {
   return pointA.x === pointB.x && pointA.y === pointB.y;
 };
 
+const getYIntercept = function(point, slope) {
+  return slope * point.x + point.y;
+};
+
 class Line {
   constructor(endA, endB) {
     this.endA = { x: endA.x, y: endA.y };
@@ -45,6 +49,9 @@ class Line {
     const slopeA = this.slope;
     const slopeB = otherLine.slope;
     return slopeA == slopeB;
+  }
+  findY(x) {
+    return this.slope * this.endA.x + getYIntercept(this.endA, this.slope);
   }
 }
 
