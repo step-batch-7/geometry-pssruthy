@@ -105,9 +105,14 @@ describe('Line', function() {
 
   describe('split', function() {
     it('Should give two line instance by splitting the line into two', () => {
-      const line = new Line({ x: 1, y: 1 }, { x: 3, y: 3 });
-      const lineFirstHalf = new Line({ x: 1, y: 1 }, { x: 2, y: 2 });
-      const lineSecondHalf = new Line({ x: 2, y: 2 }, { x: 3, y: 3 });
+      let line = new Line({ x: 1, y: 1 }, { x: 3, y: 3 });
+      let lineFirstHalf = new Line({ x: 1, y: 1 }, { x: 2, y: 2 });
+      let lineSecondHalf = new Line({ x: 2, y: 2 }, { x: 3, y: 3 });
+      assert.deepStrictEqual(line.split(), [lineFirstHalf, lineSecondHalf]);
+
+      line = new Line({ x: 3, y: 1 }, { x: 8, y: 3 });
+      lineFirstHalf = new Line({ x: 3, y: 1 }, { x: 5.5, y: 2 });
+      lineSecondHalf = new Line({ x: 5.5, y: 2 }, { x: 8, y: 3 });
       assert.deepStrictEqual(line.split(), [lineFirstHalf, lineSecondHalf]);
     });
   });
