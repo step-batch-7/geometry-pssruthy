@@ -8,4 +8,13 @@ describe('Point', function() {
       assert.strictEqual(point.toString(), '[Point @(2,3)]');
     });
   });
+  describe('visit', function() {
+    it('Should give sum of coordinates', function() {
+      const point = new Point(2, 3);
+      assert.strictEqual(
+        point.visit((x, y) => x + y),
+        5
+      );
+    });
+  });
 });
