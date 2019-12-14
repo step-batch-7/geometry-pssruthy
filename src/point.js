@@ -22,6 +22,10 @@ class Point {
     if (!(other instanceof Point)) return false;
     return areCoordinatesEqual(this, other);
   }
+
+  clone() {
+    return new Point(this.x, this.y);
+  }
 }
 
 module.exports = Point;
