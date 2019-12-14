@@ -9,7 +9,7 @@ describe('Point', function() {
     });
   });
   describe('visit', function() {
-    it('Should give result of action in coordinates', function() {
+    it('Should give result of action on coordinates', function() {
       let point = new Point(2, 3);
       assert.strictEqual(
         point.visit((x, y) => x + y),
@@ -20,6 +20,13 @@ describe('Point', function() {
         point.visit((x, y) => x * y),
         6
       );
+    });
+  });
+  describe('isEqualTo', function() {
+    it('Should validate when two  points are equal', function() {
+      const point = new Point(2, 3);
+      const other = new Point(2, 3);
+      assert.ok(point.isEqualTo(other));
     });
   });
 });
