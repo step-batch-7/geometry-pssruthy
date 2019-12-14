@@ -1,7 +1,6 @@
 'use strict';
-
-const Line = require('./../src/line.js');
 const { assert } = require('chai');
+const Line = require('./../src/line.js');
 
 describe('Line', () => {
   describe('toString', () => {
@@ -95,18 +94,29 @@ describe('Line', () => {
 
   describe('findY', () => {
     it('Should give y coordinate for a given x coordinate on the line ', () => {
-      let line = new Line({ x: 1, y: 1 }, { x: 3, y: 3 });
+      let line = new Line({ x: 1, y: 1 }, { x: 5, y: 5 });
       assert.strictEqual(line.findY(4), 4);
 
       line = new Line({ x: 3, y: 5 }, { x: 2, y: 4 });
       assert.strictEqual(line.findY(2), 4);
     });
+    it('Should give NaN when outside the Line Segment', () => {
+      const line = new Line({ x: 3, y: 5 }, { x: 3, y: 4 });
+      assert.isNaN(line.findX(4));
+    });
   });
 
   describe('findX', () => {
     it('Should give x coordinate for a given y coordinate on the line', () => {
-      const line = new Line({ x: 3, y: 5 }, { x: 2, y: 4 });
-      assert.strictEqual(line.findX(4), 2);
+      const line = new Line({ x: 3, y: 3 }, { x: 5, y: 5 });
+      assert.strictEqual(line.findX(4), 4);
+    });
+    it('should give NaN when the point is outside of the line segment', () => {
+      let line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
+      assert.isNaN(line.findX(5));
+
+      line = new Line({ x: 3, y: 7 }, { x: 3, y: 3 });
+      assert.isNaN(line.findX(4));
     });
   });
 

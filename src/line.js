@@ -1,4 +1,5 @@
 'use strict';
+const Point = require('./../src/point.js');
 
 const areCoordinatesEqual = function(pointA, pointB) {
   return pointA.x === pointB.x && pointA.y === pointB.y;
@@ -12,6 +13,11 @@ const getMiddlePoint = function(pointA, pointB) {
   const middleX = (pointA.x + pointB.x) / 2;
   const middleY = (pointA.y + pointB.y) / 2;
   return { x: middleX, y: middleY };
+};
+
+const isNumInRange = function(ranges, num) {
+  const [minRange, maxRange] = ranges.sort();
+  return minRange <= num && maxRange >= num;
 };
 
 class Line {
@@ -58,10 +64,12 @@ class Line {
   }
 
   findY(x) {
+    if (!isNumInRange([this.endA.x, this.endB.x], x)) return NaN;
     return this.slope * x + getIntercept(this.endA, this.slope);
   }
 
   findX(y) {
+    if (!isNumInRange([this.endA.y, this.endB.y], y)) return NaN;
     return y - getIntercept(this.endA, this.slope / this.slope);
   }
 
