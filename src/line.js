@@ -54,12 +54,12 @@ class Line {
     return slope;
   }
 
-  isParallelTo(otherLine) {
-    if (!(otherLine instanceof Line)) {
+  isParallelTo(other) {
+    if (!(other instanceof Line)) {
       return false;
     }
     const slopeA = this.slope;
-    const slopeB = otherLine.slope;
+    const slopeB = other.slope;
     return slopeA == slopeB;
   }
 
@@ -78,6 +78,10 @@ class Line {
     const lineFirstHalf = new Line(this.endA, lineMiddlePoint);
     const lineSecondHalf = new Line(lineMiddlePoint, this.endB);
     return [lineFirstHalf, lineSecondHalf];
+  }
+  hasPoint(other) {
+    if (other instanceof Point && this.findX(other.y) == other.x) return true;
+    return false;
   }
 }
 

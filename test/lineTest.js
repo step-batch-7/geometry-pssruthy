@@ -1,6 +1,7 @@
 'use strict';
 const { assert } = require('chai');
 const Line = require('./../src/line.js');
+const Point = require('./../src/point.js');
 
 describe('Line', () => {
   describe('toString', () => {
@@ -131,6 +132,13 @@ describe('Line', () => {
       lineFirstHalf = new Line({ x: 3, y: 1 }, { x: 5.5, y: 2 });
       lineSecondHalf = new Line({ x: 5.5, y: 2 }, { x: 8, y: 3 });
       assert.deepStrictEqual(line.split(), [lineFirstHalf, lineSecondHalf]);
+    });
+  });
+  describe('hasPoint', () => {
+    it('Should give true if the point is on the line', () => {
+      const line = new Line({ x: 1, y: 1 }, { x: 3, y: 3 });
+      const point = new Point(2, 2);
+      assert.ok(line.hasPoint(point));
     });
   });
 });
