@@ -48,4 +48,11 @@ describe('Point', function() {
       assert.deepStrictEqual(point.clone(), pointCopy);
     });
   });
+  describe('findDistanceTo', () => {
+    it('Should give distance between two points', () => {
+      const point = new Point(1, 2);
+      const other = new Point(2, 3);
+      assert.approximately(point.findDistanceTo(other), 1.41, 0.1);
+    });
+  });
 });

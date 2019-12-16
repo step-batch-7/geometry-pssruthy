@@ -26,6 +26,11 @@ class Point {
   clone() {
     return new Point(this.x, this.y);
   }
+  findDistanceTo(other) {
+    const xDiff = this.x - other.x;
+    const yDiff = this.y - other.y;
+    return Math.sqrt(xDiff ** 2 + yDiff ** 2);
+  }
 }
 
 module.exports = Point;
