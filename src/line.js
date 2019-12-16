@@ -42,8 +42,10 @@ class Line {
   isEqualTo(other) {
     if (!(other instanceof Line)) return false;
     return (
-      areCoordinatesEqual(this.endA, other.endA) &&
-      areCoordinatesEqual(this.endB, other.endB)
+      (areCoordinatesEqual(this.endA, other.endA) &&
+        areCoordinatesEqual(this.endB, other.endB)) ||
+      (areCoordinatesEqual(this.endA, other.endB) &&
+        areCoordinatesEqual(this.endB, other.endA))
     );
   }
 
@@ -85,6 +87,7 @@ class Line {
     const lineSecondHalf = new Line(lineMiddlePoint, this.endB);
     return [lineFirstHalf, lineSecondHalf];
   }
+
   hasPoint(other) {
     if (other instanceof Point && this.findX(other.y) == other.x) return true;
     return false;

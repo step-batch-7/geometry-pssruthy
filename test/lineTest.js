@@ -33,6 +33,11 @@ describe('Line', () => {
       const other = {};
       assert.ok(!line.isEqualTo(other));
     });
+    it('Should give true when two lines are same but points order is reverse', () => {
+      const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
+      const other = new Line({ x: 3, y: 4 }, { x: 1, y: 2 });
+      assert.ok(line.isEqualTo(other));
+    });
   });
 
   describe('length', () => {
