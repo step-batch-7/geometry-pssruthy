@@ -111,6 +111,11 @@ describe('Line', () => {
       const other = new Line({ x: 5, y: 0 }, { x: 3, y: 0 });
       assert.isTrue(line.isParallelTo(other));
     });
+    it('Should invalidate when lines are from different instance', () => {
+      const line = new Line({ x: 7, y: 7 }, { x: 5, y: 7 });
+      const other = { endA: { x: 7, y: 7 }, endB: { x: 5, y: 7 } };
+      assert.isFalse(line.isParallelTo(other));
+    });
   });
 
   describe('findY', () => {
