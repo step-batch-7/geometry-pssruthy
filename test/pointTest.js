@@ -50,9 +50,23 @@ describe('Point', function() {
   });
   describe('findDistanceTo', () => {
     it('Should give distance between two points', () => {
-      const point = new Point(1, 2);
-      const other = new Point(2, 3);
+      let point = new Point(1, 3);
+      let other = new Point(1, 5);
+      assert.strictEqual(point.findDistanceTo(other), 2);
+
+      point = new Point(1, 2);
+      other = new Point(2, 3);
       assert.approximately(point.findDistanceTo(other), 1.41, 0.1);
+    });
+    it('Should give NaN when given is not a number', () => {
+      const point = new Point(1, 2);
+      const other = { x: 2, y: 3 };
+      assert.isNaN(point.findDistanceTo(other));
+    });
+    it('Should give zero when both points are same', () => {
+      const point = new Point(1, 2);
+      const other = new Point(1, 2);
+      assert.strictEqual(point.findDistanceTo(other), 0);
     });
   });
 });
