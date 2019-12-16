@@ -15,6 +15,9 @@ class Circle {
     const isRadiusEqual = this.radius == other.radius;
     return isCenterSame && isRadiusEqual;
   }
+  get area() {
+    return Math.PI * this.radius ** 2;
+  }
 }
 
 module.exports = Circle;
