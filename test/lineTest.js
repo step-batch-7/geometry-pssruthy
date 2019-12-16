@@ -195,6 +195,11 @@ describe('Line', () => {
       const point = new Point(2, 8);
       assert.isTrue(line.hasPoint(point));
     });
+    it('Should give true when the point is perpendicular to x axis', () => {
+      const line = new Line({ x: 3, y: 1 }, { x: 3, y: 8 });
+      const point = new Point(3, 5);
+      assert.isTrue(line.hasPoint(point));
+    });
   });
   describe('findPointFromStart', function() {
     it('Should give a point at a distance from the start of line', () => {

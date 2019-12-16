@@ -91,7 +91,10 @@ class Line {
 
   hasPoint(other) {
     if (!(other instanceof Point)) return false;
-    return this.findX(other.y) == other.x || this.findY(other.x) == other.y;
+    const isXInRange = isNumInRange([this.endA.x, this.endB.x], other.x);
+    const isYInRange = isNumInRange([this.endA.y, this.endB.y], other.y);
+    const isCollinear = areCollinearPoints(this.endA, this.endB, other);
+    return isXInRange && isYInRange && isCollinear;
   }
 
   findPointFromStart(distance) {
