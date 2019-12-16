@@ -125,12 +125,20 @@ describe('Line', () => {
       const line = new Line({ x: 3, y: 3 }, { x: 5, y: 5 });
       assert.strictEqual(line.findX(4), 4);
     });
+    it('Should give x coordinate for a given y coordinate is end of the line', () => {
+      const line = new Line({ x: 1, y: 1 }, { x: 5, y: 5 });
+      assert.strictEqual(line.findX(1), 1);
+    });
     it('should give NaN when the point is outside of the line segment', () => {
       let line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
       assert.isNaN(line.findX(5));
 
       line = new Line({ x: 3, y: 7 }, { x: 3, y: 3 });
       assert.isNaN(line.findX(4));
+    });
+    it('Should give a x coordinate when the line is perpendicular to y axis', () => {
+      const line = new Line({ x: 3, y: 5 }, { x: 9, y: 5 });
+      assert.strictEqual(line.findX(5), 5);
     });
   });
 
