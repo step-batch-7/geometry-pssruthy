@@ -72,9 +72,22 @@ describe('Point', function() {
   });
   describe('isOn', function() {
     it('Should give true if the point is on the line ', function() {
-      const point = new Point(1, 1);
-      const line = new Line({ x: 0, y: 0 }, { x: 6, y: 6 });
+      let point = new Point(1, 1);
+      let line = new Line({ x: 0, y: 0 }, { x: 6, y: 6 });
       assert.isTrue(point.isOn(line));
+
+      point = new Point(1.5, 1.5);
+      line = new Line({ x: 0, y: 0 }, { x: 6, y: 6 });
+      assert.isTrue(point.isOn(line));
+    });
+    it('Should give false if the point is not on the line ', function() {
+      let point = new Point(3, 4);
+      let line = new Line({ x: 0, y: 0 }, { x: 6, y: 6 });
+      assert.isFalse(point.isOn(line));
+
+      point = new Point(2.4, 1);
+      line = new Line({ x: 2, y: 2 }, { x: 6, y: 6 });
+      assert.isFalse(point.isOn(line));
     });
   });
 });
