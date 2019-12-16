@@ -66,12 +66,12 @@ class Line {
 
   findY(x) {
     if (!isNumInRange([this.endA.x, this.endB.x], x)) return NaN;
+    if (this.slope == Infinity || this.slope == -Infinity) return this.endA.y;
     return this.slope * x + getIntercept(this.endA, this.slope);
   }
 
   findX(y) {
     if (!isNumInRange([this.endA.y, this.endB.y], y)) return NaN;
-    if (this.slope == Infinity) return this.endA.y;
     return y - getIntercept(this.endA, this.slope / this.slope);
   }
 
