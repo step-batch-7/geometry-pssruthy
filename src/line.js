@@ -20,6 +20,13 @@ const isNumInRange = function(ranges, num) {
   return minRange <= num && maxRange >= num;
 };
 
+const areCollinearPoints = function(pointA, pointB, pointC) {
+  const [x1, y1] = [pointA.x, pointA.y];
+  const [x2, y2] = [pointB.x, pointB.y];
+  const [x3, y3] = [pointC.x, pointC.y];
+  return x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2) == 0;
+};
+
 class Line {
   constructor(endA, endB) {
     this.endA = { x: endA.x, y: endA.y };
@@ -55,13 +62,9 @@ class Line {
   }
 
   isParallelTo(other) {
-    if (!(other instanceof Line)) {
-      return false;
-    }
-    const lineIntercept = getIntercept(this.endA, this.slope);
-    const otherIntercept = getIntercept(other.endA, other.slope);
-    const isSlopeEqual = this.slope == other.slope;
-    return isSlopeEqual && lineIntercept != otherIntercept;
+    if (!(other instanceof Line)) return false;
+    if (areCollinearPoints(this.endA, this.endB, other.endA)) return false;
+    return this.slope == other.slope;
   }
 
   findY(x) {

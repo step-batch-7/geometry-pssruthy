@@ -96,6 +96,16 @@ describe('Line', () => {
       const otherLine = new Line({ x: 4, y: 6 }, { x: 2, y: 3 });
       assert.notOk(line.isParallelTo(otherLine));
     });
+    it('Should give true when both lines are parallel to y axis', () => {
+      const line = new Line({ x: 2, y: 5 }, { x: 2, y: 7 });
+      const other = new Line({ x: 3, y: 0 }, { x: 3, y: 5 });
+      assert.isTrue(line.isParallelTo(other));
+    });
+    it('Should give true when both lines are parallel to x axis', () => {
+      const line = new Line({ x: 7, y: 7 }, { x: 5, y: 7 });
+      const other = new Line({ x: 5, y: 0 }, { x: 3, y: 0 });
+      assert.isTrue(line.isParallelTo(other));
+    });
   });
 
   describe('findY', () => {
