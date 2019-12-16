@@ -89,8 +89,15 @@ class Line {
   }
 
   hasPoint(other) {
-    if (other instanceof Point && this.findX(other.y) == other.x) return true;
-    return false;
+    if (!(other instanceof Point)) return false;
+    return this.findX(other.y) == other.x || this.findY(other.x) == other.y;
+  }
+
+  findPointFromStart(distance) {
+    const ratio = distance / this.length;
+    const xPoint = (1 - ratio) * this.endA.x + ratio * this.endB.x;
+    const yPoint = (1 - ratio) * this.endA.y + ratio * this.endB.y;
+    return new Point(xPoint, yPoint);
   }
 }
 

@@ -190,5 +190,17 @@ describe('Line', () => {
       point = {};
       assert.notOk(line.hasPoint(point));
     });
+    it('Should give true when the point is perpendicular to y axis', () => {
+      const line = new Line({ x: 1, y: 8 }, { x: 3, y: 8 });
+      const point = new Point(2, 8);
+      assert.isTrue(line.hasPoint(point));
+    });
+  });
+  describe('findPointFromStart', function() {
+    it('Should give a point at a distance from the start of line', () => {
+      const line = new Line({ x: 1, y: 3 }, { x: 1, y: 8 });
+      const point = new Point(1, 5);
+      assert.deepStrictEqual(line.findPointFromStart(2), point);
+    });
   });
 });
