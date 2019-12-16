@@ -45,4 +45,10 @@ describe('Circle', () => {
       assert.strictEqual(circle.area, 0);
     });
   });
+  describe('perimeter', function() {
+    it('Should give perimeter of the circle', function() {
+      const circle = new Circle({ x: 1, y: 2 }, 5);
+      assert.approximately(circle.perimeter, 31.4, 0.1);
+    });
+  });
 });
