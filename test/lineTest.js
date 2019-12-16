@@ -57,21 +57,21 @@ describe('Line', () => {
   describe('slope', () => {
     it('Should give slope of a line when slope is positive', () => {
       const line = new Line({ x: 3, y: 2 }, { x: 7, y: 3 });
-      assert.strictEqual(line.slope, 4);
+      assert.strictEqual(line.slope, 0.25);
     });
     it('Should give slope of a line when slope is negative', () => {
       const line = new Line({ x: 7, y: 2 }, { x: 3, y: 3 });
-      assert.strictEqual(line.slope, -4);
+      assert.strictEqual(line.slope, -0.25);
     });
     it('Should give infinity when the line is parallel to y-axis', () => {
-      let line = new Line({ x: 8, y: 3 }, { x: 3, y: 3 });
+      let line = new Line({ x: 3, y: 8 }, { x: 3, y: 6 });
       assert.strictEqual(line.slope, -Infinity);
 
-      line = new Line({ x: 3, y: 3 }, { x: 8, y: 3 });
+      line = new Line({ x: 4, y: 3 }, { x: 4, y: 4 });
       assert.strictEqual(line.slope, Infinity);
     });
     it('Should give zero when the line is parallel to x-axis', () => {
-      const line = new Line({ x: 3, y: 9 }, { x: 3, y: 3 });
+      const line = new Line({ x: 5, y: 3 }, { x: 6, y: 3 });
       assert.strictEqual(line.slope, 0);
     });
   });
@@ -105,6 +105,10 @@ describe('Line', () => {
 
       line = new Line({ x: 3, y: 5 }, { x: 2, y: 4 });
       assert.strictEqual(line.findY(2), 4);
+    });
+    it('Should give y coordinate for a given x coordinate is end of the line', () => {
+      const line = new Line({ x: 1, y: 1 }, { x: 5, y: 5 });
+      assert.strictEqual(line.findY(1), 1);
     });
     it('Should give NaN when the point is outside the Line Segment', () => {
       const line = new Line({ x: 3, y: 5 }, { x: 3, y: 4 });

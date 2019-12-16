@@ -50,7 +50,7 @@ class Line {
   get slope() {
     const [x1, y1] = [this.endA.x, this.endA.y];
     const [x2, y2] = [this.endB.x, this.endB.y];
-    const slope = (x2 - x1) / (y2 - y1);
+    const slope = (y2 - y1) / (x2 - x1);
     return slope;
   }
 
@@ -71,6 +71,7 @@ class Line {
 
   findX(y) {
     if (!isNumInRange([this.endA.y, this.endB.y], y)) return NaN;
+    if (this.slope == Infinity) return this.endA.y;
     return y - getIntercept(this.endA, this.slope / this.slope);
   }
 
