@@ -36,9 +36,13 @@ describe('Circle', () => {
     });
   });
   describe('area', function() {
-    it('Should give area of the circle', function() {
+    it('Should give area of the circle', () => {
       const circle = new Circle({ x: 1, y: 2 }, 5);
       assert.approximately(circle.area, 78.5, 0.1);
+    });
+    it('Should give area of the circle when the radius in zero', () => {
+      const circle = new Circle({ x: 1, y: 2 }, 0);
+      assert.strictEqual(circle.area, 0);
     });
   });
 });
