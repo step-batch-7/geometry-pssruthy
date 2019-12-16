@@ -91,6 +91,11 @@ describe('Line', () => {
       const otherLine = new Line({ x: 6, y: 4 }, { x: 9, y: 2 });
       assert.notOk(line.isParallelTo(otherLine));
     });
+    it('Should give false when two lines are overlapped', () => {
+      const line = new Line({ x: 4, y: 6 }, { x: 2, y: 3 });
+      const otherLine = new Line({ x: 4, y: 6 }, { x: 2, y: 3 });
+      assert.notOk(line.isParallelTo(otherLine));
+    });
   });
 
   describe('findY', () => {
@@ -101,7 +106,7 @@ describe('Line', () => {
       line = new Line({ x: 3, y: 5 }, { x: 2, y: 4 });
       assert.strictEqual(line.findY(2), 4);
     });
-    it('Should give NaN when outside the Line Segment', () => {
+    it('Should give NaN when the point is outside the Line Segment', () => {
       const line = new Line({ x: 3, y: 5 }, { x: 3, y: 4 });
       assert.isNaN(line.findX(4));
     });

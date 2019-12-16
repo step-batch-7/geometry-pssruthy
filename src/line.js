@@ -58,9 +58,10 @@ class Line {
     if (!(other instanceof Line)) {
       return false;
     }
-    const slopeA = this.slope;
-    const slopeB = other.slope;
-    return slopeA == slopeB;
+    const lineIntercept = getIntercept(this.endA, this.slope);
+    const otherIntercept = getIntercept(other.endA, other.slope);
+    const isSlopeEqual = this.slope == other.slope;
+    return isSlopeEqual && lineIntercept != otherIntercept;
   }
 
   findY(x) {
