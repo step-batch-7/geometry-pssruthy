@@ -135,10 +135,24 @@ describe('Line', () => {
     });
   });
   describe('hasPoint', () => {
-    it('Should give true if the point is on the line', () => {
+    it('Should validate the point is on the line', () => {
       const line = new Line({ x: 1, y: 1 }, { x: 3, y: 3 });
       const point = new Point(2, 2);
       assert.ok(line.hasPoint(point));
+    });
+    it('Should invalidate the point is not on the line', () => {
+      const line = new Line({ x: 3, y: 4 }, { x: 1, y: 5 });
+      const point = new Point(8, 2);
+      assert.notOk(line.hasPoint(point));
+    });
+    it('Should invalidate the point is not an instance of Point class', () => {
+      let line = new Line({ x: 3, y: 3 }, { x: 7, y: 7 });
+      let point = { x: 4, y: 4 };
+      assert.notOk(line.hasPoint(point));
+
+      line = new Line({ x: 3, y: 7 }, { x: 3, y: 3 });
+      point = {};
+      assert.notOk(line.hasPoint(point));
     });
   });
 });
