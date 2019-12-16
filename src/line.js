@@ -94,6 +94,7 @@ class Line {
   }
 
   findPointFromStart(distance) {
+    if (distance > this.length) return null;
     const ratio = distance / this.length;
     const xPoint = (1 - ratio) * this.endA.x + ratio * this.endB.x;
     const yPoint = (1 - ratio) * this.endA.y + ratio * this.endB.y;

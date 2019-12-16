@@ -202,5 +202,10 @@ describe('Line', () => {
       const point = new Point(1, 5);
       assert.deepStrictEqual(line.findPointFromStart(2), point);
     });
+    it('Should give null when the distance is larger than the line', () => {
+      const line = new Line({ x: 1, y: 3 }, { x: 1, y: 8 });
+      const point = new Point(1, 5);
+      assert.isNull(line.findPointFromStart(10));
+    });
   });
 });
