@@ -1,5 +1,6 @@
 'use strict';
 const Point = require('./../src/point.js');
+const Line = require('./../src/line');
 const { assert } = require('chai');
 
 describe('Point', function() {
@@ -67,6 +68,13 @@ describe('Point', function() {
       const point = new Point(1, 2);
       const other = new Point(1, 2);
       assert.strictEqual(point.findDistanceTo(other), 0);
+    });
+  });
+  describe('isOn', function() {
+    it('Should give true if the point is on the line ', function() {
+      const point = new Point(1, 1);
+      const line = new Line({ x: 0, y: 0 }, { x: 6, y: 6 });
+      assert.isTrue(point.isOn(line));
     });
   });
 });
