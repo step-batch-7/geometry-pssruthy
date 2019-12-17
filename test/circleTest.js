@@ -70,4 +70,11 @@ describe('Circle', () => {
       assert.isFalse(circle.hasPoint(other));
     });
   });
+  describe('moveTo', () => {
+    it('Should give a new circle of same dimensions at the given point', () => {
+      const circle = new Circle({ x: 1, y: 1 }, 2);
+      const movedCircle = new Circle({ x: 3, y: 2 }, 2);
+      assert.deepStrictEqual(circle.moveTo({ x: 3, y: 2 }), movedCircle);
+    });
+  });
 });
