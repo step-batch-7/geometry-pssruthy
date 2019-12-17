@@ -1,7 +1,8 @@
 'use strict';
+const { assert } = require('chai');
 const Point = require('./../src/point.js');
 const Line = require('./../src/line');
-const { assert } = require('chai');
+const Circle = require('./../src/circle');
 
 describe('Point', function() {
   describe('toString', () => {
@@ -88,6 +89,16 @@ describe('Point', function() {
       point = new Point(2.4, 1);
       line = new Line({ x: 2, y: 2 }, { x: 6, y: 6 });
       assert.isFalse(point.isOn(line));
+    });
+    it('Should validate if the point on the circle', () => {
+      const circle = new Circle({ x: 2, y: 2 }, 2);
+      const point = new Point(2, 4);
+      assert.isTrue(point.isOn(circle));
+    });
+    it('Should invalidate if the point not on the circle', () => {
+      const circle = new Circle({ x: 2, y: 2 }, 2);
+      const point = new Point(2, 5);
+      assert.isFalse(point.isOn(circle));
     });
   });
 });

@@ -4,13 +4,13 @@ const Circle = require('./../src/circle');
 const Point = require('./../src/point');
 
 describe('Circle', () => {
-  describe('toString', function() {
+  describe('toString', () => {
     it('Should give string representation', () => {
       const circle = new Circle({ x: 1, y: 2 }, 5);
       assert.strictEqual(circle.toString(), '[Circle @(1,2) radius 5]');
     });
   });
-  describe('isEqualTo', function() {
+  describe('isEqualTo', () => {
     it('Should validate if both circles are at same location and are of same size', () => {
       const circle = new Circle({ x: 1, y: 2 }, 5);
       const other = new Circle({ x: 1, y: 2 }, 5);
@@ -37,7 +37,7 @@ describe('Circle', () => {
       assert.isFalse(circle.isEqualTo(other));
     });
   });
-  describe('area', function() {
+  describe('area', () => {
     it('Should give area of the circle', () => {
       const circle = new Circle({ x: 1, y: 2 }, 5);
       assert.approximately(circle.area, 78.5, 0.1);
@@ -47,17 +47,27 @@ describe('Circle', () => {
       assert.strictEqual(circle.area, 0);
     });
   });
-  describe('perimeter', function() {
-    it('Should give perimeter of the circle', function() {
+  describe('perimeter', () => {
+    it('Should give perimeter of the circle', () => {
       const circle = new Circle({ x: 1, y: 2 }, 5);
       assert.approximately(circle.perimeter, 31.4, 0.1);
     });
   });
-  describe('hasPoint', function() {
-    it('Should validate when the point is on the circle', function() {
+  describe('hasPoint', () => {
+    it('Should validate when the point is on the circle', () => {
       const circle = new Circle({ x: 0, y: 0 }, 2);
       const other = new Point(0, 2);
       assert.isTrue(circle.hasPoint(other));
+    });
+    it('Should invalidate when the point is not on the circle', () => {
+      const circle = new Circle({ x: 0, y: 0 }, 2);
+      const other = new Point(0, 8);
+      assert.isFalse(circle.hasPoint(other));
+    });
+    it('Should invalidate when the given is not an instance of Point Class', () => {
+      const circle = new Circle({ x: 0, y: 0 }, 2);
+      const other = { x: 0, y: 2 };
+      assert.isFalse(circle.hasPoint(other));
     });
   });
 });

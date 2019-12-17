@@ -33,8 +33,8 @@ class Point {
     return Math.sqrt(xDiff ** 2 + yDiff ** 2);
   }
 
-  isOn(line) {
-    return line.hasPoint(this);
+  isOn(shape) {
+    return shape.hasPoint(this);
   }
 }
 
