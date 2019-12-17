@@ -1,37 +1,38 @@
 'use strict';
 const Point = require('./point');
+const Line = require('./Line');
 
-const getDimensions = function(diagonalEndA, diagonalEndB) {
-  const width = Math.abs(diagonalEndA.y - diagonalEndB.y);
-  const length = Math.abs(diagonalEndA.x - diagonalEndB.x);
+const getDimensions = function(vertexA, vertexC) {
+  const width = Math.abs(vertexA.y - vertexC.y);
+  const length = Math.abs(vertexA.x - vertexC.x);
   return { width, length };
 };
 
 class Rectangle {
-  constructor(diagonalEndA, diagonalEndB) {
-    this.diagonalEndA = new Point(diagonalEndA.x, diagonalEndA.y);
-    this.diagonalEndB = new Point(diagonalEndB.x, diagonalEndB.y);
+  constructor(vertexA, vertexC) {
+    this.vertexA = new Point(vertexA.x, vertexA.y);
+    this.vertexC = new Point(vertexC.x, vertexC.y);
   }
   toString() {
-    const endA = `${this.diagonalEndA.x},${this.diagonalEndA.y}`;
-    const endB = `${this.diagonalEndB.x},${this.diagonalEndB.y}`;
+    const endA = `${this.vertexA.x},${this.vertexA.y}`;
+    const endB = `${this.vertexC.x},${this.vertexC.y}`;
     return `[Rectangle (${endA}) to (${endB})]`;
   }
   get area() {
-    const dimensions = getDimensions(this.diagonalEndA, this.diagonalEndB);
+    const dimensions = getDimensions(this.vertexA, this.vertexC);
     return dimensions.width * dimensions.length;
   }
   get perimeter() {
-    const dimensions = getDimensions(this.diagonalEndA, this.diagonalEndB);
+    const dimensions = getDimensions(this.vertexA, this.vertexC);
     return 2 * (dimensions.length + dimensions.width);
   }
   isEqualTo(other) {
     if (!(other instanceof Rectangle)) return false;
     return (
-      (this.diagonalEndA.isEqualTo(other.diagonalEndA) &&
-        this.diagonalEndB.isEqualTo(other.diagonalEndB)) ||
-      (this.diagonalEndA.isEqualTo(other.diagonalEndB) &&
-        this.diagonalEndB.isEqualTo(other.diagonalEndA))
+      (this.vertexA.isEqualTo(other.vertexA) &&
+        this.vertexC.isEqualTo(other.vertexC)) ||
+      (this.vertexA.isEqualTo(other.vertexC) &&
+        this.vertexC.isEqualTo(other.vertexA))
     );
   }
 }
