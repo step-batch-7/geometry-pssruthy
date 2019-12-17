@@ -9,4 +9,10 @@ describe('Rectangle', () => {
       assert.strictEqual(rectangle.toString(), '[Rectangle (1,1) to (2,3)]');
     });
   });
+  describe('area', () => {
+    it('Should give the area of the rectangle', () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 6, y: 3 });
+      assert.strictEqual(rectangle.area, 10);
+    });
+  });
 });
