@@ -114,9 +114,21 @@ describe('Rectangle', () => {
     });
   });
   describe('covers', () => {
-    it('Should validate if point is inside rectangle', () => {
+    it('Should validate if point is inside the rectangle', () => {
       const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 3, y: 3 });
       assert.isTrue(rectangle.covers(new Point(2, 2)));
+    });
+    it('Should invalidate if point is outside the rectangle', () => {
+      const rectangle = new Rectangle({ x: 0, y: 1 }, { x: 3, y: 4 });
+      assert.isFalse(rectangle.covers(new Point(4, 4)));
+    });
+    it('Should invalidate if point is on rectangle perimeter', () => {
+      const rectangle = new Rectangle({ x: 0, y: 1 }, { x: 3, y: 4 });
+      assert.isFalse(rectangle.covers(new Point(0, 2)));
+    });
+    it('Should invalidate if point is not an instance of point', () => {
+      const rectangle = new Rectangle({ x: 0, y: 1 }, { x: 3, y: 4 });
+      assert.isFalse(rectangle.covers({ x: 1, y: 2 }));
     });
   });
 });
