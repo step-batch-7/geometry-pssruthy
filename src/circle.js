@@ -29,7 +29,7 @@ class Circle {
     return new Circle(point, this.radius);
   }
   covers(point) {
-    return point.findDistanceTo(this.center) <= this.radius;
+    return point.findDistanceTo(this.center) < this.radius;
   }
 }
 
