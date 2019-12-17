@@ -51,5 +51,18 @@ describe('Rectangle', () => {
       const other = new Rectangle({ x: 1, y: 1 }, { x: 1, y: 1 });
       assert.isTrue(rectangle.isEqualTo(other));
     });
+    it('Should invalidate if both rectangles are on different coordinates', () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 1, y: 1 });
+      const other = new Rectangle({ x: 3, y: 1 }, { x: 1, y: 1 });
+      assert.isFalse(rectangle.isEqualTo(other));
+    });
+    it('Should invalidate if both rectangles are from different instances', () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 1, y: 1 });
+      const other = {
+        diagonalEndA: { x: 1, y: 1 },
+        diagonalEndB: { x: 1, y: 1 }
+      };
+      assert.isFalse(rectangle.isEqualTo(other));
+    });
   });
 });
