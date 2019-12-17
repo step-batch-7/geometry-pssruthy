@@ -12,7 +12,10 @@ const getAnotherDiagonal = function(vertexA, vertexC) {
   const vertexD = new Point(vertexA.x, vertexC.y);
   return [vertexB, vertexD];
 };
-
+const isNumInRange = function(ranges, num) {
+  const [minRange, maxRange] = ranges.sort((a, b) => a - b);
+  return minRange < num && maxRange > num;
+};
 class Rectangle {
   constructor(vertexA, vertexC) {
     this.vertexA = new Point(vertexA.x, vertexA.y);
@@ -47,11 +50,13 @@ class Rectangle {
     const BC = new Line(vertexB, this.vertexC);
     const CD = new Line(this.vertexC, vertexD);
     const DA = new Line(vertexD, this.vertexA);
+    return [AB, BC, CD, DA].some(edge => edge.hasPoint(other));
+  }
+  covers(other) {
+    if (!(other instanceof Point)) return false;
     return (
-      AB.hasPoint(other) ||
-      BC.hasPoint(other) ||
-      CD.hasPoint(other) ||
-      DA.hasPoint(other)
+      isNumInRange([this.vertexA.x, this.vertexC.x], other.x) &&
+      isNumInRange([this.vertexA.y, this.vertexC.y], other.x)
     );
   }
 }
