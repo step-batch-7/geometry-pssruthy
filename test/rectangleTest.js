@@ -66,4 +66,11 @@ describe('Rectangle', () => {
       assert.isFalse(rectangle.isEqualTo(other));
     });
   });
+  describe('hasPoint', () => {
+    it('Should validate when the point is vertex', () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 3, y: 3 });
+      const other = new Point(1, 1);
+      assert.isTrue(rectangle.hasPoint(other));
+    });
+  });
 });

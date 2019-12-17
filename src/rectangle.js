@@ -7,6 +7,11 @@ const getDimensions = function(vertexA, vertexC) {
   const length = Math.abs(vertexA.x - vertexC.x);
   return { width, length };
 };
+const getAnotherDiagonal = function(vertexA, vertexC) {
+  const vertexB = { x: vertexC.x, y: vertexA.y };
+  const vertexD = { x: vertexA.x, y: vertexC.x };
+  return [vertexB, vertexD];
+};
 
 class Rectangle {
   constructor(vertexA, vertexC) {
@@ -33,6 +38,20 @@ class Rectangle {
         this.vertexC.isEqualTo(other.vertexC)) ||
       (this.vertexA.isEqualTo(other.vertexC) &&
         this.vertexC.isEqualTo(other.vertexA))
+    );
+  }
+  hasPoint(other) {
+    if (!(other instanceof Point)) return false;
+    const [vertexB, vertexD] = getAnotherDiagonal(this.vertexA, this.vertexC);
+    const AB = new Line(this.vertexA, vertexB);
+    const BC = new Line(vertexB, this.vertexC);
+    const CD = new Line(this.vertexC, vertexD);
+    const DA = new Line(vertexD, this.vertexA);
+    return (
+      AB.hasPoint(other) ||
+      BC.hasPoint(other) ||
+      CD.hasPoint(other) ||
+      DA.hasPoint(other)
     );
   }
 }
