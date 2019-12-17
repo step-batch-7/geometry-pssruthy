@@ -8,8 +8,8 @@ const getDimensions = function(vertexA, vertexC) {
   return { width, length };
 };
 const getAnotherDiagonal = function(vertexA, vertexC) {
-  const vertexB = { x: vertexC.x, y: vertexA.y };
-  const vertexD = { x: vertexA.x, y: vertexC.x };
+  const vertexB = new Point(vertexC.x, vertexA.y);
+  const vertexD = new Point(vertexA.x, vertexC.y);
   return [vertexB, vertexD];
 };
 

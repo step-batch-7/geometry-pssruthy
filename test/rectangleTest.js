@@ -67,10 +67,50 @@ describe('Rectangle', () => {
     });
   });
   describe('hasPoint', () => {
-    it('Should validate when the point is vertex', () => {
-      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 3, y: 3 });
-      const other = new Point(1, 1);
+    it('Should validate when the point is on vertices', () => {
+      let rectangle = new Rectangle({ x: 1, y: 1 }, { x: 3, y: 3 });
+      let other = new Point(1, 1);
       assert.isTrue(rectangle.hasPoint(other));
+
+      rectangle = new Rectangle({ x: 1, y: 1 }, { x: 3, y: 3 });
+      other = new Point(3, 3);
+      assert.isTrue(rectangle.hasPoint(other));
+
+      rectangle = new Rectangle({ x: 1, y: 1 }, { x: 3, y: 3 });
+      other = new Point(1, 3);
+      assert.isTrue(rectangle.hasPoint(other));
+
+      rectangle = new Rectangle({ x: 1, y: 1 }, { x: 3, y: 3 });
+      other = new Point(3, 1);
+      assert.isTrue(rectangle.hasPoint(other));
+    });
+    it('Should validate when the point is on the edge perpendicular to x axis', () => {
+      let rectangle = new Rectangle({ x: 3, y: 6 }, { x: 7, y: 10 });
+      let other = new Point(3, 8);
+      assert.isTrue(rectangle.hasPoint(other));
+
+      rectangle = new Rectangle({ x: 3, y: 6 }, { x: 7, y: 10 });
+      other = new Point(7, 9);
+      assert.isTrue(rectangle.hasPoint(other));
+    });
+    it('Should validate when the point is on the edge perpendicular to y axis', () => {
+      let rectangle = new Rectangle({ x: 3, y: 6 }, { x: 7, y: 10 });
+      let other = new Point(4, 6);
+      assert.isTrue(rectangle.hasPoint(other));
+
+      rectangle = new Rectangle({ x: 3, y: 6 }, { x: 7, y: 10 });
+      other = new Point(4, 10);
+      assert.isTrue(rectangle.hasPoint(other));
+    });
+    it('Should invalidate when the point is inside the rectangle', () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 3, y: 3 });
+      const other = new Point(2, 2);
+      assert.isFalse(rectangle.hasPoint(other));
+    });
+    it('Should invalidate when the point is outside the rectangle', () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 3, y: 3 });
+      const other = new Point(4, 4);
+      assert.isFalse(rectangle.hasPoint(other));
     });
   });
 });

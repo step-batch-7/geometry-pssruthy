@@ -12,7 +12,7 @@ const getMiddlePoint = function(pointA, pointB) {
 };
 
 const isNumInRange = function(ranges, num) {
-  const [minRange, maxRange] = ranges.sort();
+  const [minRange, maxRange] = ranges.sort((a, b) => a - b);
   return minRange <= num && maxRange >= num;
 };
 
