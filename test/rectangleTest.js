@@ -27,4 +27,10 @@ describe('Rectangle', () => {
       assert.strictEqual(rectangle.area, 0);
     });
   });
+  describe('perimeter', () => {
+    it('Should give the perimeter of the rectangle', () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 6, y: 3 });
+      assert.strictEqual(rectangle.perimeter, 14);
+    });
+  });
 });
