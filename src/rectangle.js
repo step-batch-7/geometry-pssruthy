@@ -25,6 +25,15 @@ class Rectangle {
     const dimensions = getDimensions(this.diagonalEndA, this.diagonalEndB);
     return 2 * (dimensions.length + dimensions.width);
   }
+  isEqualTo(other) {
+    if (!(other instanceof Rectangle)) return false;
+    return (
+      (this.diagonalEndA.isEqualTo(other.diagonalEndA) &&
+        this.diagonalEndB.isEqualTo(other.diagonalEndB)) ||
+      (this.diagonalEndA.isEqualTo(other.diagonalEndB) &&
+        this.diagonalEndB.isEqualTo(other.diagonalEndA))
+    );
+  }
 }
 
 module.exports = Rectangle;

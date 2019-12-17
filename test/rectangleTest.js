@@ -45,4 +45,11 @@ describe('Rectangle', () => {
       assert.strictEqual(rectangle.perimeter, 0);
     });
   });
+  describe('isEqualTo', () => {
+    it('Should validate if both rectangles are on same coordinates', () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 1, y: 1 });
+      const other = new Rectangle({ x: 1, y: 1 }, { x: 1, y: 1 });
+      assert.isTrue(rectangle.isEqualTo(other));
+    });
+  });
 });
