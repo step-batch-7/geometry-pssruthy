@@ -77,4 +77,11 @@ describe('Circle', () => {
       assert.deepStrictEqual(circle.moveTo({ x: 3, y: 2 }), movedCircle);
     });
   });
+  describe('covers', () => {
+    it('Should validate if the point is inside circle', () => {
+      const circle = new Circle({ x: 1, y: 1 }, 3);
+      const point = new Point(2, 2);
+      assert.isTrue(circle.covers(point));
+    });
+  });
 });
