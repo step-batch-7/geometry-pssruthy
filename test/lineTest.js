@@ -16,27 +16,27 @@ describe('Line', () => {
     it('Should give true when two lines are equal', () => {
       const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
       const other = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
-      assert.ok(line.isEqualTo(other));
+      assert.isTrue(line.isEqualTo(other));
     });
     it('Should give false when two lines are not equal', () => {
       const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
       const other = new Line({ x: 1, y: 4 }, { x: 9, y: 4 });
-      assert.ok(!line.isEqualTo(other));
+      assert.isTrue(!line.isEqualTo(other));
     });
     it('Should give false when they are not similar instances', () => {
       const line = new Line({ x: 2, y: 3 }, { x: 4, y: 5 });
       const other = { endA: { x: 2, y: 3 }, endB: { x: 4, y: 5 } };
-      assert.ok(!line.isEqualTo(other));
+      assert.isTrue(!line.isEqualTo(other));
     });
     it('Should invalidate when the other line object is empty', () => {
       const line = new Line({ x: 2, y: 3 }, { x: 4, y: 5 });
       const other = {};
-      assert.ok(!line.isEqualTo(other));
+      assert.isTrue(!line.isEqualTo(other));
     });
     it('Should give true when two lines are same but points order is reverse', () => {
       const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
       const other = new Line({ x: 3, y: 4 }, { x: 1, y: 2 });
-      assert.ok(line.isEqualTo(other));
+      assert.isTrue(line.isEqualTo(other));
     });
   });
 
@@ -85,21 +85,21 @@ describe('Line', () => {
     it('Should give true when two lines are parallel', () => {
       let line = new Line({ x: 5, y: 6 }, { x: 2, y: 3 });
       let otherLine = new Line({ x: 6, y: 4 }, { x: 4, y: 2 });
-      assert.ok(line.isParallelTo(otherLine));
+      assert.isTrue(line.isParallelTo(otherLine));
 
       line = new Line({ x: 1, y: 2 }, { x: -5, y: 4 });
       otherLine = new Line({ x: 1, y: 1 }, { x: 4, y: 0 });
-      assert.ok(line.isParallelTo(otherLine));
+      assert.isTrue(line.isParallelTo(otherLine));
     });
     it('Should give false when two lines are not parallel', () => {
       const line = new Line({ x: 4, y: 6 }, { x: 2, y: 3 });
       const otherLine = new Line({ x: 6, y: 4 }, { x: 9, y: 2 });
-      assert.notOk(line.isParallelTo(otherLine));
+      assert.isFalse(line.isParallelTo(otherLine));
     });
     it('Should give false when two lines are overlapped', () => {
       const line = new Line({ x: 4, y: 6 }, { x: 2, y: 3 });
       const otherLine = new Line({ x: 4, y: 6 }, { x: 2, y: 3 });
-      assert.notOk(line.isParallelTo(otherLine));
+      assert.isFalse(line.isParallelTo(otherLine));
     });
     it('Should give true when both lines are parallel to y axis', () => {
       const line = new Line({ x: 2, y: 5 }, { x: 2, y: 7 });
@@ -179,21 +179,21 @@ describe('Line', () => {
     it('Should validate the point is on the line', () => {
       const line = new Line({ x: 1, y: 1 }, { x: 3, y: 3 });
       const point = new Point(2, 2);
-      assert.ok(line.hasPoint(point));
+      assert.isTrue(line.hasPoint(point));
     });
     it('Should invalidate the point is not on the line', () => {
       const line = new Line({ x: 3, y: 4 }, { x: 1, y: 5 });
       const point = new Point(8, 2);
-      assert.notOk(line.hasPoint(point));
+      assert.isFalse(line.hasPoint(point));
     });
     it('Should invalidate the point is not an instance of Point class', () => {
       let line = new Line({ x: 3, y: 3 }, { x: 7, y: 7 });
       let point = { x: 4, y: 4 };
-      assert.notOk(line.hasPoint(point));
+      assert.isFalse(line.hasPoint(point));
 
       line = new Line({ x: 3, y: 7 }, { x: 3, y: 3 });
       point = {};
-      assert.notOk(line.hasPoint(point));
+      assert.isFalse(line.hasPoint(point));
     });
     it('Should give true when the point is perpendicular to y axis', () => {
       const line = new Line({ x: 1, y: 8 }, { x: 3, y: 8 });

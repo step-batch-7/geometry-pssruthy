@@ -29,17 +29,17 @@ describe('Point', function() {
     it('Should validate the point and the given parameter are equal', () => {
       const point = new Point(2, 3);
       const other = new Point(2, 3);
-      assert.ok(point.isEqualTo(other));
+      assert.isTrue(point.isEqualTo(other));
     });
     it('Should invalidate the point and the given parameter are not equal', () => {
       const point = new Point(3, 4);
       let other = new Point(4, 5);
-      assert.notOk(point.isEqualTo(other));
+      assert.isFalse(point.isEqualTo(other));
     });
     it('Should invalidate the point and the given parameter are different type instances', () => {
       const point = new Point(3, 4);
       const other = { x: 3, y: 4 };
-      assert.notOk(point.isEqualTo(other));
+      assert.isFalse(point.isEqualTo(other));
     });
   });
   describe('clone', function() {
