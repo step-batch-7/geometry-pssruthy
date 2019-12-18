@@ -6,8 +6,7 @@ const areCoordinatesEqual = function(pointA, pointB) {
 
 class Point {
   constructor(x, y) {
-    this.x = x;
-    this.y = y;
+    [this.x, this.y] = [x, y];
   }
 
   toString() {

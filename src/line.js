@@ -1,10 +1,6 @@
 'use strict';
 const Point = require('./../src/point.js');
 
-const getIntercept = function(point, slope) {
-  return point.y - slope * point.x;
-};
-
 const getMiddlePoint = function(pointA, pointB) {
   const middleX = (pointA.x + pointB.x) / 2;
   const middleY = (pointA.y + pointB.y) / 2;
@@ -105,5 +101,4 @@ class Line {
     return this.findPointFromStart(this.length - distance);
   }
 }
-
 module.exports = Line;
