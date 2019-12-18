@@ -73,7 +73,7 @@ class Line {
   findY(x) {
     if (!isNumInRange([this.endA.x, this.endB.x], x)) return NaN;
     if (this.slope == Infinity || this.slope == -Infinity) return this.endA.y;
-    return this.slope * x + getIntercept(this.endA, this.slope);
+    return (x - this.endA.x) * this.slope + this.endA.y;
   }
 
   findX(y) {

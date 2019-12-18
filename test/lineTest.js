@@ -138,6 +138,10 @@ describe('Line', () => {
       const line = new Line({ x: 3, y: 5 }, { x: 3, y: 1 });
       assert.strictEqual(line.findY(3), 5);
     });
+    it('Should give a x coordinate when the line is perpendicular to y axis', () => {
+      const line = new Line({ x: 3, y: 5 }, { x: 7, y: 5 });
+      assert.strictEqual(line.findY(4), 5);
+    });
   });
 
   describe('findX', () => {
