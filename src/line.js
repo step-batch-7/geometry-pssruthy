@@ -61,7 +61,6 @@ class Line {
     const [x1, y1] = [this.endA.x, this.endA.y];
     const [x2, y2] = [this.endB.x, this.endB.y];
     const slope = (y2 - y1) / (x2 - x1);
-    if (slope == -Infinity) return Infinity;
     return slope;
   }
 

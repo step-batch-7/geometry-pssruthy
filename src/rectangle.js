@@ -56,7 +56,7 @@ class Rectangle {
     if (!(other instanceof Point)) return false;
     return (
       isNumInRange([this.vertexA.x, this.vertexC.x], other.x) &&
-      isNumInRange([this.vertexA.y, this.vertexC.y], other.x)
+      isNumInRange([this.vertexA.y, this.vertexC.y], other.y)
     );
   }
 }

@@ -117,6 +117,10 @@ describe('Rectangle', () => {
     it('Should validate if point is inside the rectangle', () => {
       const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 3, y: 3 });
       assert.isTrue(rectangle.covers(new Point(2, 2)));
+
+      rectangle = new Rectangle({ x: 1, y: 1 }, { x: 5, y: 4 });
+      point = new Point(4, 3);
+      assert.isTrue(rectangle.covers(point));
     });
     it('Should invalidate if point is outside the rectangle', () => {
       const rectangle = new Rectangle({ x: 0, y: 1 }, { x: 3, y: 4 });
