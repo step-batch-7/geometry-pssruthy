@@ -221,6 +221,14 @@ describe('Line', () => {
       const line = new Line({ x: 1, y: 3 }, { x: 1, y: 8 });
       assert.isNull(line.findPointFromStart(10));
     });
+    it('Should give null when the distance is less than the zero', () => {
+      const line = new Line({ x: 1, y: 3 }, { x: 1, y: 8 });
+      assert.isNull(line.findPointFromStart(-4));
+    });
+    it('Should give null when typeof number is not a number', () => {
+      const line = new Line({ x: 1, y: 3 }, { x: 1, y: 8 });
+      assert.isNull(line.findPointFromStart('a'));
+    });
   });
   describe('findPointFromEnd', () => {
     it('Should give a point at a distance from the end of line', () => {
@@ -228,9 +236,17 @@ describe('Line', () => {
       const point = new Point(1, 6);
       assert.deepStrictEqual(line.findPointFromEnd(2), point);
     });
+    it('Should give null when the distance is less than the zero', () => {
+      const line = new Line({ x: 1, y: 3 }, { x: 1, y: 8 });
+      assert.isNull(line.findPointFromEnd(-4));
+    });
     it('Should give null when the distance is larger than the line', () => {
       const line = new Line({ x: 1, y: 3 }, { x: 1, y: 8 });
       assert.isNull(line.findPointFromEnd(10));
+    });
+    it('Should give null when typeof number is not a number', () => {
+      const line = new Line({ x: 1, y: 3 }, { x: 1, y: 8 });
+      assert.isNull(line.findPointFromEnd('a'));
     });
   });
 });

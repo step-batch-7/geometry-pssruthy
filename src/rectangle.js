@@ -22,9 +22,9 @@ class Rectangle {
     this.vertexC = new Point(vertexC.x, vertexC.y);
   }
   toString() {
-    const endA = `${this.vertexA.x},${this.vertexA.y}`;
-    const endB = `${this.vertexC.x},${this.vertexC.y}`;
-    return `[Rectangle (${endA}) to (${endB})]`;
+    const vertexA = `${this.vertexA.x},${this.vertexA.y}`;
+    const vertexC = `${this.vertexC.x},${this.vertexC.y}`;
+    return `[Rectangle (${vertexA}) to (${vertexC})]`;
   }
   get area() {
     const dimensions = getDimensions(this.vertexA, this.vertexC);

@@ -93,5 +93,9 @@ describe('Circle', () => {
       const point = new Point(1, 5);
       assert.isFalse(circle.covers(point));
     });
+    it('Should invalidate if the point is not an instance of Point class', () => {
+      const circle = new Circle({ x: 1, y: 1 }, 3);
+      assert.isFalse(circle.covers({ x: 2, y: 2 }));
+    });
   });
 });

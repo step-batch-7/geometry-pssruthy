@@ -93,11 +93,12 @@ class Line {
     return isXInRange && isYInRange && isCollinear;
   }
   findPointFromStart(distance) {
-    if (distance > this.length || distance < 0) return null;
     if (typeof distance != 'number') return null;
+    if (distance > this.length || distance < 0) return null;
     return getPointOnLine(this, distance);
   }
   findPointFromEnd(distance) {
+    if (typeof distance != 'number') return null;
     return this.findPointFromStart(this.length - distance);
   }
 }

@@ -36,5 +36,4 @@ class Point {
     return shape.hasPoint(this);
   }
 }
-
 module.exports = Point;
