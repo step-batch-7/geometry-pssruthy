@@ -65,6 +65,11 @@ describe('Rectangle', () => {
       };
       assert.isFalse(rectangle.isEqualTo(other));
     });
+    it('should validate when start of one line is equal to end of other line and vise versa', () => {
+      const rectangle = new Rectangle({ x: 3, y: 3 }, { x: 6, y: 7 });
+      const other = new Rectangle({ x: 6, y: 7 }, { x: 3, y: 3 });
+      assert.isTrue(rectangle.isEqualTo(other));
+    });
   });
   describe('hasPoint', () => {
     it('Should validate when the point is on vertices', () => {
@@ -115,12 +120,11 @@ describe('Rectangle', () => {
   });
   describe('covers', () => {
     it('Should validate if point is inside the rectangle', () => {
-      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 3, y: 3 });
+      let rectangle = new Rectangle({ x: 1, y: 1 }, { x: 3, y: 3 });
       assert.isTrue(rectangle.covers(new Point(2, 2)));
 
       rectangle = new Rectangle({ x: 1, y: 1 }, { x: 5, y: 4 });
-      point = new Point(4, 3);
-      assert.isTrue(rectangle.covers(point));
+      assert.isTrue(rectangle.covers(new Point(4, 3)));
     });
     it('Should invalidate if point is outside the rectangle', () => {
       const rectangle = new Rectangle({ x: 0, y: 1 }, { x: 3, y: 4 });

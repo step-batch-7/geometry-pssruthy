@@ -152,13 +152,14 @@ describe('Line', () => {
     it('should give NaN when the point is outside of the line segment', () => {
       let line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
       assert.isNaN(line.findX(5));
-
-      line = new Line({ x: 3, y: 7 }, { x: 3, y: 3 });
-      assert.isNaN(line.findX(4));
     });
     it('Should give a x coordinate when the line is perpendicular to y axis', () => {
       const line = new Line({ x: 3, y: 5 }, { x: 9, y: 5 });
       assert.strictEqual(line.findX(5), 3);
+    });
+    it('Should validate a point have x coordinate and the line is perpendicular to x axis', () => {
+      const line = new Line({ x: 3, y: 7 }, { x: 3, y: 3 });
+      assert.strictEqual(line.findX(4), 3);
     });
   });
 
