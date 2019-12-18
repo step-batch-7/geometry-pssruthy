@@ -1,6 +1,6 @@
 'use strict';
 const Point = require('./point');
-const Line = require('./Line');
+const Line = require('./line');
 
 const getDimensions = function(vertexA, vertexC) {
   const width = Math.abs(vertexA.y - vertexC.y);
