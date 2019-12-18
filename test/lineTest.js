@@ -70,7 +70,7 @@ describe('Line', () => {
     });
     it('Should give infinity when the line is parallel to y-axis', () => {
       let line = new Line({ x: 3, y: 8 }, { x: 3, y: 6 });
-      assert.strictEqual(line.slope, -Infinity);
+      assert.strictEqual(line.slope, Infinity);
 
       line = new Line({ x: 4, y: 3 }, { x: 4, y: 4 });
       assert.strictEqual(line.slope, Infinity);
@@ -206,7 +206,7 @@ describe('Line', () => {
       assert.isTrue(line.hasPoint(point));
     });
   });
-  describe('findPointFromStart', function() {
+  describe('findPointFromStart', () => {
     it('Should give a point at a distance from the start of line', () => {
       const line = new Line({ x: 1, y: 3 }, { x: 1, y: 8 });
       const point = new Point(1, 5);
@@ -217,7 +217,7 @@ describe('Line', () => {
       assert.isNull(line.findPointFromStart(10));
     });
   });
-  describe('findPointFromEnd', function() {
+  describe('findPointFromEnd', () => {
     it('Should give a point at a distance from the end of line', () => {
       const line = new Line({ x: 1, y: 3 }, { x: 1, y: 8 });
       const point = new Point(1, 6);
