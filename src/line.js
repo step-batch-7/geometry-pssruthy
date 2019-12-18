@@ -80,7 +80,7 @@ class Line {
   findX(y) {
     if (!isNumInRange([this.endA.y, this.endB.y], y)) return NaN;
     if (this.slope == 0) return this.endA.x;
-    return y - getIntercept(this.endA, this.slope / this.slope);
+    return (y - getIntercept(this.endA, this.slope)) / this.slope;
   }
 
   split() {
@@ -98,12 +98,12 @@ class Line {
     return isXInRange && isYInRange && isCollinear;
   }
   findPointFromStart(distance) {
-    if (distance > this.length) return null;
+    if (distance > this.length || distance < 0) return null;
+    if (typeof distance != 'number') return null;
     return getPointOnLine(this, distance);
   }
   findPointFromEnd(distance) {
-    if (distance > this.length) return null;
-    return getPointOnLine(this, this.length - distance);
+    return this.findPointFromStart(this.length - distance);
   }
 }
 
