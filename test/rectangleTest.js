@@ -117,6 +117,10 @@ describe('Rectangle', () => {
       const other = new Point(4, 4);
       assert.isFalse(rectangle.hasPoint(other));
     });
+    it('Should invalidate when the point not an instance of point', () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 3, y: 3 });
+      assert.isFalse(rectangle.hasPoint({ x: 1, y: 2 }));
+    });
   });
   describe('covers', () => {
     it('Should validate if point is inside the rectangle', () => {
